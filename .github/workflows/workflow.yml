@@ -11,13 +11,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-    - uses: azure/login@v1
+    - name: "Login Azure ClI"
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.PROJECTIN_SP }}
+        
+    - name: 'Build and push image'
+      uses: azure/docker-login@v1
       with:
         login-server: hipstershopimg.azurecr.io
-        creds: ${{ secrets.PROJECTIN_SP }}
     # az acr build  --registry HipstershopImg --image adservergit:v1 projectIn/src/adservice/
     #docker push hipstershopimg.azurecr.io/sampleapp:${{ github.sha }}
     - run: |
-        docker build . -f Dockerfile -t hipstershopimg.azurecr.io/adservice:v1 
+        docker build https://github.com/OctaPal/projectIn/tree/main/src/adservice -f Dockerfile -t hipstershopimg.azurecr.io/adservice:v1 
          
 
