@@ -28,10 +28,10 @@ jobs:
         login-server: hipstershopimg.azurecr.io
         username: 49e0ba10-d1e6-4686-bbb1-fbe4e59490b0
         password: UlNQKxF8ywcrfuZWLeTvbGEGmyGBbU6Fq-
-        context: ./projectIn/src/adservice/
         
     #docker push hipstershopimg.azurecr.io/adservice:v1
     - name: Build the Docker image
+      working-directory: projectIn/src/adservice/
       run: |
         docker build -t adservice home/runner/work/projectIn/projectIn/src/adservice/
        
