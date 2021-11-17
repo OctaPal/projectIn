@@ -21,7 +21,7 @@ jobs:
     
     - name: "PWD COMMAND"
       run: |
-        ls
+        cd src/adsercice/
     
     - name: "Login Azure ClI"
       uses: azure/login@v1
@@ -34,7 +34,6 @@ jobs:
         login-server: hipstershopimg.azurecr.io
         username: 49e0ba10-d1e6-4686-bbb1-fbe4e59490b0
         password: UlNQKxF8ywcrfuZWLeTvbGEGmyGBbU6Fq-
-        working-directory: src/adservice
         
     #docker push hipstershopimg.azurecr.io/adservice:v1
     - name: Build the Docker image
