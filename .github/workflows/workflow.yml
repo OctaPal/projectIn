@@ -14,8 +14,8 @@ jobs:
     - uses: azure/login@v1
       with:
         creds: ${{ secrets.PROJECTIN_SP }}
-        login-server: hipstershopimg.azurecr.io
+        #login-server: hipstershopimg.azurecr.io
     
     - run: |
-        az acr build  --registry HipstershopImg --image adservergit:v1 projectIn/src/adservice/Dockerfile
+        az acr build  --registry HipstershopImg --image adservergit:v1 projectIn/src/adservice/
 
