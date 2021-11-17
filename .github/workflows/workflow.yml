@@ -36,9 +36,11 @@ jobs:
         password: UlNQKxF8ywcrfuZWLeTvbGEGmyGBbU6Fq-
         
     #docker push hipstershopimg.azurecr.io/adservice:v1
+    #docker build -t adservice .
     - name: Build the Docker image
       run: |
-        docker build -t adservice .
+        ls
+        
        
         
          
