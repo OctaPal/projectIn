@@ -5,8 +5,7 @@ name: ProjectIn
 on:
   push:
     branches: [ main ]
-    paths:
-    - "projectIn/src/adservice/"
+
   pull_request:
     branches: [ main ]
   
