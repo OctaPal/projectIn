@@ -21,7 +21,7 @@ jobs:
     
     - name: "PWD COMMAND"
       run: |
-        pwd
+        ls
     
     - name: "Login Azure ClI"
       uses: azure/login@v1
