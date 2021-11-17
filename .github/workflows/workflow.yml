@@ -1,0 +1,23 @@
+
+# File: .github/workflows/workflow.yml
+
+on: [push]
+
+name: prtojectIn
+
+jobs:
+
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - uses: azure/login@v1
+      with:
+        login-server: hipstershopimg.azurecr.io
+        creds: ${{ secrets.PROJECTIN_SP }}
+    # az acr build  --registry HipstershopImg --image adservergit:v1 projectIn/src/adservice/
+    #docker push hipstershopimg.azurecr.io/sampleapp:${{ github.sha }}
+    - run: |
+        docker build -t hipstershopimg.azurecr.io/adservice:v1 https://github.com/OctaPal/projectIn/tree/main/src/adservice
+         
+
