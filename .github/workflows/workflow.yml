@@ -1,20 +1,35 @@
 
 # File: .github/workflows/workflow.yml
+name: Relase Docker image into ACR
 
-on: [push]
-
-name: prtojectIn
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
 
-  build-and-deploy:
+  build:
+
     runs-on: ubuntu-latest
+
     steps:
+    - uses: actions/checkout@v2
+#on: [push]
+
+#name: prtojectIn
+
+#jobs:
+
+#  build-and-deploy:
+#    runs-on: ubuntu-latest
+#    steps:
     
-    - name: "Login Azure ClI"
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.PROJECTIN_SP }}
+#    - name: "Login Azure ClI"
+#      uses: azure/login@v1
+#      with:
+#        creds: ${{ secrets.PROJECTIN_SP }}
         
     - name: 'Build and push image'
       uses: azure/docker-login@v1
