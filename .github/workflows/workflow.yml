@@ -39,7 +39,8 @@ jobs:
     #docker build -t adservice .
     - name: Build the Docker image
       run: |
-        ls
+        cd src/adservice/
+        docker build -t adservice .
         
        
         
