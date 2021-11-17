@@ -21,7 +21,7 @@ jobs:
     
     - name: "PWD COMMAND"
       run: |
-        cd src/adsercice/
+        cd src/adservice/
     
     - name: "Login Azure ClI"
       uses: azure/login@v1
