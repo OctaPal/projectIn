@@ -19,5 +19,5 @@ jobs:
     #docker push hipstershopimg.azurecr.io/sampleapp:${{ github.sha }}
     - run: |
         docker build -f Dockerfile https://github.com/OctaPal/projectIn/tree/main/src/adservice
-        
+         
 
