@@ -25,6 +25,6 @@ jobs:
     # az acr build  --registry HipstershopImg --image adservergit:v1 projectIn/src/adservice/
     #docker push hipstershopimg.azurecr.io/sampleapp:${{ github.sha }}
     - run: |
-        docker build . -t hipstershopimg.azurecr.io/adservice:${{ github.sha }}
+        docker build .projectIn/ -t hipstershopimg.azurecr.io/adservice:${{ github.sha }}
          
 
