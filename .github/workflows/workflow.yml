@@ -18,6 +18,6 @@ jobs:
     # az acr build  --registry HipstershopImg --image adservergit:v1 projectIn/src/adservice/
     #docker push hipstershopimg.azurecr.io/sampleapp:${{ github.sha }}
     - run: |
-        docker build https://github.com/OctaPal/projectIn/tree/main/src/adservice
+        docker build -f Dockerfile https://github.com/OctaPal/projectIn/tree/main/src/adservice
         
 
