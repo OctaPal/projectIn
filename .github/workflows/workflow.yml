@@ -35,8 +35,8 @@ jobs:
     - name: Build the Docker image
       run: |
         cd src/adservice/
-        docker build -t hipstershopimg.azurecr.io/adserviceGIT:v1 .
-        docker push hipstershopimg.azurecr.io/adserviceGIT:v1
+        docker build -t hipstershopimg.azurecr.io/adservicegit:v1 .
+        docker push hipstershopimg.azurecr.io/adservicegit:v1
         
        
         
