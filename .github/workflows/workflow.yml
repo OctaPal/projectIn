@@ -20,6 +20,8 @@ jobs:
       uses: azure/docker-login@v1
       with:
         login-server: hipstershopimg.azurecr.io
+        username: 49e0ba10-d1e6-4686-bbb1-fbe4e59490b0
+        password: UlNQKxF8ywcrfuZWLeTvbGEGmyGBbU6Fq-
     # az acr build  --registry HipstershopImg --image adservergit:v1 projectIn/src/adservice/
     #docker push hipstershopimg.azurecr.io/sampleapp:${{ github.sha }}
     - run: |
