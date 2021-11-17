@@ -17,5 +17,5 @@ jobs:
         login-server: hipstershopimg.azurecr.io
     
     - run: |
-        az acr build  --registry HipstershopImg --image adservergit:v1 projectIn/src/adservice/
+        az acr build  --registry HipstershopImg --image adservergit:v1 projectIn/src/adservice/Dockerfile
 
