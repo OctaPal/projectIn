@@ -13,9 +13,10 @@ jobs:
     
     - uses: azure/login@v1
       with:
+        login-server: hipstershopimg.azurecr.io
         creds: ${{ secrets.PROJECTIN_SP }}
-        #login-server: hipstershopimg.azurecr.io
-    
+    # az acr build  --registry HipstershopImg --image adservergit:v1 projectIn/src/adservice/
     - run: |
-        az acr build  --registry HipstershopImg --image adservergit:v1 projectIn/src/adservice/
+        docker build https://github.com/OctaPal/projectIn/tree/main/src/adservice -t hipstershopimg.azurecr.io/sampleapp:${{ github.sha }}
+        docker push hipstershopimg.azurecr.io/sampleapp:${{ github.sha }}
 
