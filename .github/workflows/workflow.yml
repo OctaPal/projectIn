@@ -33,7 +33,7 @@ jobs:
     - name: Build the Docker image
       working-directory: projectIn/src/adservice/
       run: |
-        docker build -t adservice home/runner/work/projectIn/projectIn/src/adservice/
+        docker build -t adservice .
        
         
          
