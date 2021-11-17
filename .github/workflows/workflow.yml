@@ -1,6 +1,6 @@
 
 # File: .github/workflows/workflow.yml
-name: Relase Docker image into ACR
+name: ProjectIn
 
 on:
   push:
@@ -16,20 +16,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-#on: [push]
-
-#name: prtojectIn
-
-#jobs:
-
-#  build-and-deploy:
-#    runs-on: ubuntu-latest
-#    steps:
     
-#    - name: "Login Azure ClI"
-#      uses: azure/login@v1
-#      with:
-#        creds: ${{ secrets.PROJECTIN_SP }}
+    - name: "Login Azure ClI"
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.PROJECTIN_SP }}
         
     - name: 'Build and push image'
       uses: azure/docker-login@v1
@@ -37,9 +28,11 @@ jobs:
         login-server: hipstershopimg.azurecr.io
         username: 49e0ba10-d1e6-4686-bbb1-fbe4e59490b0
         password: UlNQKxF8ywcrfuZWLeTvbGEGmyGBbU6Fq-
-    # az acr build  --registry HipstershopImg --image adservergit:v1 projectIn/src/adservice/
-    #docker push hipstershopimg.azurecr.io/sampleapp:${{ github.sha }}
+   
     - name: Build the Docker image
-      run: docker build -t adservice .
+      run: |
+        docker build -t hipstershopimg.azurecr.io/adservice:v1 https://github.com/OctaPal/projectIn/tree/main/src/adservice
+        docker push hipstershopimg.azurecr.io/adservice:v1
+        
          
 
