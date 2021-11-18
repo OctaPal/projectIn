@@ -11,32 +11,33 @@ on:
   
 
 jobs:
-
-  build:
-
+  terraform:
     runs-on: ubuntu-latest
 
+    env:
+      ARM_CLIENT_ID: ${{secrets.ARM_CLIENT_ID}}
+      ARM_CLIENT_SECRET: ${{secrets.ARM_CLIENT_SECRET}}
+      ARM_SUBSCRIPTION_ID: ${{secrets.ARM_SUBSCRIPTION_ID}}
+      ARM_TENANT_ID: ${{secrets.ARM_TENANT_ID}}
+
     steps:
-    - uses: actions/checkout@v2
-    
-    - name: "Login Azure ClI"
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.PROJECTIN_SP }}
-        
-    - name: 'Login Azure ACR'
-      uses: azure/docker-login@v1
-      with:
-        login-server: hipstershopimg.azurecr.io
-        username: 49e0ba10-d1e6-4686-bbb1-fbe4e59490b0
-        password: UlNQKxF8ywcrfuZWLeTvbGEGmyGBbU6Fq-
-        
-    
-    - name: Build the Docker image
-      run: |
-        cd src/adservice/
-        docker build -t hipstershopimg.azurecr.io/adservicegit:v1 .
-        docker push hipstershopimg.azurecr.io/adservicegit:v1
+      - uses: actions/checkout@v2
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Terraform Init
+        run: |
+        cd terraform
+        terraform init
+
+      - name: Terraform Format
+        run: terraform fmt -check
+
+      - name: Terraform Plan
+        run: |
+        cd terraform
+        terraform plan
         
        
         

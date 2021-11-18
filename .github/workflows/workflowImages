@@ -1,0 +1,44 @@
+
+# File: .github/workflows/workflow.yml
+name: ProjectIn
+
+on:
+  push:
+    branches: [ main ]
+
+  pull_request:
+    branches: [ main ]
+  
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: "Login Azure ClI"
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.PROJECTIN_SP }}
+        
+    - name: 'Login Azure ACR'
+      uses: azure/docker-login@v1
+      with:
+        login-server: hipstershopimg.azurecr.io
+        username: 49e0ba10-d1e6-4686-bbb1-fbe4e59490b0
+        password: UlNQKxF8ywcrfuZWLeTvbGEGmyGBbU6Fq-
+        
+    
+    - name: Build the Docker image
+      run: |
+        cd src/adservice/
+        docker build -t hipstershopimg.azurecr.io/adservice:v1 .
+        docker push hipstershopimg.azurecr.io/adservice:v1
+        
+       
+        
+         
+
