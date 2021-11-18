@@ -12,8 +12,8 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_resource_group" "example" {
-  name     = "octavio-example"
+data "azurerm_resource_group" "example" {
+  name     = "octavio-group"
   location = "West Europe"
 }
 
@@ -22,6 +22,6 @@ resource "azurerm_resource_group" "example" {
 resource "azurerm_virtual_network" "main" {
   name                = "octapal-network"
   address_space       = ["10.1.0.0/16"]
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
+  location            = data.azurerm_resource_group.example.location
+  resource_group_name = data.azurerm_resource_group.example.name
 } 
