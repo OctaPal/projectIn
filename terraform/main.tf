@@ -14,7 +14,7 @@ provider "azurerm" {
 
 data "azurerm_resource_group" "example" {
   name     = "octavio-group"
-  location = "West Europe"
+  location = "East US"
 }
 
 
