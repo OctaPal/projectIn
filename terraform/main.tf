@@ -23,5 +23,5 @@ resource "azurerm_virtual_network" "main" {
   name                = "octapal-network"
   address_space       = ["10.1.0.0/16"]
   location            = "East US"
-  resource_group_name = "octavio-group"
+  resource_group_name = "octavio-group" 
 } 
