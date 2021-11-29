@@ -1,0 +1,33 @@
+---
+- hosts: all
+  become: yes
+  become_user: root
+  become_method: sudo
+  roles:
+    - vault_install
+
+- hosts: all
+  roles:
+    - redis_plugin
+
+- hosts: all
+  vars:
+    unseal_keys_dir_output: "{{ playbook_dir }}/unsealKey"
+    root_token_dir_output: "{{ playbook_dir }}/rootKey"
+  roles:
+    - vault_init
+    - vault_unseal
+
+- hosts: all
+  tasks:
+    - name: Reading root key contents
+      command: cat "{{ playbook_dir }}/rootKey/rootkey"
+      register: root_token
+      delegate_to: localhost
+
+- hosts: all 
+  roles:
+    - vault_setup
+  environment:
+    VAULT_ADDR: http://127.0.0.1:8200
+    VAULT_TOKEN: "{{ root_token.stdout }}"
